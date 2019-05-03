@@ -78,7 +78,7 @@ module Alf
         #
         last_meta.should eq([200, "text/yaml"])
         #
-        last_response.body.should =~ /- :sid: S1/
+        last_response.body.should =~ /- sid: S1/
       end
 
       it 'supports a complex specification' do
