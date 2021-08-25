@@ -74,7 +74,8 @@ module Alf
       private
 
         def hash2uri(h)
-          URI.escape(h.map{|k,v| "#{k}=#{v}"}.join('&'))
+          p = URI::Parser.new
+          p.escape(h.map{ |k, v| "#{k}=#{v}" }.join('&'))
         end
 
       end # class Client
