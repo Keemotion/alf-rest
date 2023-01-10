@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 group :runtime do
-  gem "sinatra", "~> 2.0"
+  gem "sinatra", "~> 3.0"
   gem "rack-accept"
 
   gem "alf-core", path: "../alf-core"
