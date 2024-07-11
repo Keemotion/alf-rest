@@ -64,7 +64,7 @@ module Alf
             args = [url]
 
             # encode and set the body
-            args << to_payload(body)
+            args << to_payload(body) if body
 
             # make the call
             super(*args, &bl).tap{ reset }
