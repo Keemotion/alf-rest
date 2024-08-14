@@ -9,7 +9,7 @@ module Alf
 
         def to_payload(h)
           p = URI::Parser.new
-          case c = headers["Content-Type"]
+          case c = current_session.content_type
           when /urlencoded/ then p.escape(h.map{ |k, v| "#{k}=#{v}" }.join('&'))
           when /json/       then ::JSON.dump(body)
           else
