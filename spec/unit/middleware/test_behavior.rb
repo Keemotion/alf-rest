@@ -38,7 +38,7 @@ module Alf
 
         it 'sets a duplicata of the configuration' do
           get '/check-config'
-          last_response.body.should eq("true")
+          expect(last_response.body).to eq("true")
         end
       end
 
@@ -46,7 +46,7 @@ module Alf
         let(:app){ mock_app }
 
         it 'raises the Error outside the app' do
-          lambda{ get '/generate-error' }.should raise_error(/blah/)
+          expect{ get '/generate-error' }.to raise_error(/blah/)
         end
       end
 

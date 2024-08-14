@@ -1,15 +1,16 @@
 source 'http://rubygems.org'
 
 group :runtime do
-  gem "sinatra", "~> 3.0"
+  gem "sinatra", "~> 4.0"
   gem "rack-accept"
 
-  gem "alf-core", path: "../alf-core"
+  gem "alf-core", github: 'Keemotion/alf-core', branch: 'ruby3.3.4'
+  gem "myrrha", github: 'Keemotion/myrrha', branch: 'ruby3.3.4'
 end
 
 group :development do
-  gem "rake",  "~> 10.0"
-  gem "rspec", "~> 2.12"
+  gem "rake",  "~> 13.0"
+  gem "rspec", "~> 3.13"
 end
 
 group :test do
