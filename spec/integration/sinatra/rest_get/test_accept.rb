@@ -20,11 +20,11 @@ module Alf
         #
         get '/suppliers'
         #
-        last_meta.should eq([200, "application/json"])
+        expect(last_meta).to eq([200, "application/json"])
         #
         result = JSON.load(last_response.body)
-        result.should be_a(Array)
-        result.size.should eq(5)
+        expect(result).to be_a(Array)
+        expect(result.size).to eq(5)
       end
 
       it 'supports */* and fallbacks to application/json' do
@@ -32,11 +32,11 @@ module Alf
         header "Accept", "*/*"
         get '/suppliers'
         #
-        last_meta.should eq([200, "application/json"])
+        expect(last_meta).to eq([200, "application/json"])
         #
         result = JSON.load(last_response.body)
-        result.should be_a(Array)
-        result.size.should eq(5)
+        expect(result).to be_a(Array)
+        expect(result.size).to eq(5)
       end
 
       it 'supports application/json' do
@@ -44,11 +44,11 @@ module Alf
         header "Accept", "application/json"
         get '/suppliers'
         #
-        last_meta.should eq([200, "application/json"])
+        expect(last_meta).to eq([200, "application/json"])
         #
         result = JSON.load(last_response.body)
-        result.should be_a(Array)
-        result.size.should eq(5)
+        expect(result).to be_a(Array)
+        expect(result.size).to eq(5)
       end
 
       it 'supports text/csv' do
@@ -56,9 +56,9 @@ module Alf
         header "Accept", "text/csv"
         get '/suppliers'
         #
-        last_meta.should eq([200, "text/csv"])
+        expect(last_meta).to eq([200, "text/csv"])
         #
-        last_response.body.should =~ /1,Smith,20,London/
+        expect(last_response.body).to match(/1,Smith,20,London/)
       end
 
       it 'supports text/plain' do
@@ -66,9 +66,9 @@ module Alf
         header "Accept", "text/plain"
         get '/suppliers'
         #
-        last_meta.should eq([200, "text/plain"])
+        expect(last_meta).to eq([200, "text/plain"])
         #
-        last_response.body.should =~ /\|\s+S1\s+\|\s+Smith\s+\|/
+        expect(last_response.body).to match(/\|\s+S1\s+\|\s+Smith\s+\|/)
       end
 
       it 'supports text/x-yaml' do
@@ -76,9 +76,9 @@ module Alf
         header "Accept", "text/yaml"
         get '/suppliers'
         #
-        last_meta.should eq([200, "text/yaml"])
+        expect(last_meta).to eq([200, "text/yaml"])
         #
-        last_response.body.should =~ /- sid: S1/
+        expect(last_response.body).to match(/- sid: S1/)
       end
 
       it 'supports a complex specification' do
@@ -86,11 +86,11 @@ module Alf
         header "Accept", "application/*, text/*;q=0.8"
         get '/suppliers'
         #
-        last_meta.should eq([200, "application/json"])
+        expect(last_meta).to eq([200, "application/json"])
         #
         result = JSON.load(last_response.body)
-        result.should be_a(Array)
-        result.size.should eq(5)
+        expect(result).to be_a(Array)
+        expect(result.size).to eq(5)
       end
 
     end

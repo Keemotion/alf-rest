@@ -1,22 +1,15 @@
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require "alf/rest/version"
-$version = Alf::Rest::Version.to_s
-
 Gem::Specification.new do |s|
   s.name = "alf-rest"
-  s.version = $version
+  s.version = "0.17.5"
   s.summary = "Put your relational database on the web quickly, simply, safely."
   s.description = "Provides a RESTful interface for relational databases."
   s.homepage = "http://github.com/blambeau/alf"
   s.authors = ["Bernard Lambeau"]
   s.email  = ["blambeau at gmail.com"]
   s.require_paths = ['lib']
-  here = File.expand_path(File.dirname(__FILE__))
-  s.files = File.readlines(File.join(here, 'Manifest.txt')).
-                 inject([]){|files, pattern| files + Dir[File.join(here, pattern.strip)]}.
-                 collect{|x| x[(1+here.size)..-1]}
-
-
+  s.files = Dir.chdir(File.expand_path('..', __FILE__)) do
+    `git ls-files -z 2>/dev/null`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  end
   s.add_development_dependency("rake", "~> 10.0")
   s.add_development_dependency("rspec", "~> 2.12")
   s.add_development_dependency("rack-test", "~> 0.6.1")

@@ -14,7 +14,7 @@ module Alf
         let(:tuple){ {city: "London", status: "200"} }
 
         it 'gets the iterated tuples from POST' do
-          subject.should eq(Relation(city: "London", status: 200))
+          expect(subject).to eq(Relation(city: "London", status: 200))
         end
       end
 
@@ -27,7 +27,7 @@ module Alf
         end
 
         it 'gets the iterated tuples from POST' do
-          subject.should eq(Relation(city: "London", status: 200))
+          expect(subject).to eq(Relation(city: "London", status: 200))
         end
       end
 
@@ -38,7 +38,7 @@ module Alf
           let(:tuples){ [{city: "London", status: "200"}] }
 
           it 'gets the expected relation' do
-            subject.should eq(Relation(status: 200, city: "London"))
+            expect(subject).to eq(Relation(status: 200, city: "London"))
           end
         end
 
@@ -46,7 +46,7 @@ module Alf
           let(:tuples){ [{name: "Smith", status: "200"}] }
 
           it 'gets the expected relation' do
-            subject.should eq(Relation(status: 200))
+            expect(subject).to eq(Relation(status: 200))
           end
         end
       end
